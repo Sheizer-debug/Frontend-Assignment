@@ -27,7 +27,22 @@
 .App-link {
   color: #61dafb;
 }
-
+.form-background
+{
+  min-height: calc(100vh - 80px);
+  width:100%;
+  background-color: rgb(255, 255, 255);
+  padding:15px 10px;
+  margin-bottom: 10px;
+}
+form>div
+{
+  margin-bottom: 6px;
+  border:1px solid #F4F5F7;
+  border-radius: 5px;
+  background-color: #FBFDFF;
+  min-height: fit-content;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

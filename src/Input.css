@@ -1,0 +1,9 @@
+.required{
+    color: red;
+  }
+ 
+label {
+    font-weight: bold;
+    align-self: center;
+}
+  

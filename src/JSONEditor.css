@@ -1,0 +1,11 @@
+.appbar
+{
+    height:40px;
+    background-color: black!important;
+    align-items: center;
+}
+.editor
+{
+    height: calc(100vh - 80px);
+    width:100%;
+}
