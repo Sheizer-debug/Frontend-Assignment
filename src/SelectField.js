@@ -32,25 +32,3 @@ export default function SelectField({currentField,formData,handleChange,checked}
         :null
     );
 }
-                // if (currentField.validate.required) {
-                //   fieldElement = (
-                //     <Stack sx={{padding:"2px"}}direction="row" justifyContent="space-around" spacing={20}>
-                //       <label for="staticEmail" className="col-sm-2 col-form-label">{currentField.label}</label>
-                //       <TextField required id="filled-basic" label="Filled" sx={{width:"17.2rem", height:"1rem",backgroundColor:"#F0F7FF",border: "1px solid aliceblue" }} variant="filled" />
-                //     </Stack>
-                //   );
-                // } else if (props.checked) {
-                //   let key=currentField.jsonKey;
-                //   fieldElement = (
-                //     <Stack sx={{padding:"2px"}}direction="row" justifyContent="space-around" spacing={20}>
-                //       <label for="staticEmail" className="col-sm-2 col-form-label">{currentField.label}</label>
-                //       <FormControl sx={{ width:"17.2rem",backgroundColor:"#F0F7FF" }}>
-                //         <Select displayEmpty inputProps={{ 'aria-label': 'Without label' }} value={formData[key]} onChange={(event)=>props.handleChange(event,key)}>
-                //           {currentField.validate.options.map((option) => (
-                //             <MenuItem value={option.label}>{option.value}</MenuItem> 
-                //           ))}
-                //         </Select>
-                //       </FormControl>
-                //     </Stack>
-                //   );
-                // }   
