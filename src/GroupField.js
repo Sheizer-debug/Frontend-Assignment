@@ -3,7 +3,7 @@ import {Stack,Typography,Divider,ToggleButton,ToggleButtonGroup,Select,MenuItem}
 export default function SelectField({currentField,formData,handleChange,checked})
 {
     let required=currentField.validate.required,key=currentField.jsonKey;
-    console.log('Inside Group',key,formData);
+    console.log('Inside Group',formData);
     return(
         required?
         <div>
@@ -17,7 +17,7 @@ export default function SelectField({currentField,formData,handleChange,checked}
                       <Stack sx={{padding:"2px"}}direction="row" justifyContent="space-around" spacing={20}>
                           <label htmlFor={currentSubField.label} className="col-sm-2 col-form-label">{currentSubField.label}<span className="required">*</span></label>
                           <FormControl sx={{ width:"17.2rem",backgroundColor:"#F0F7FF" }}>
-                            <Select id={currentSubField.label} inputProps={{ 'aria-label': 'Without label' }}  onChange={(event)=>handleChange(event,key)}>
+                            <Select id={currentSubField.label} inputProps={{ 'aria-label': 'Without label' }} >
                               {currentSubField.validate.options.map((option) => (
                                 <MenuItem value={option.label}>{option.value}</MenuItem> 
                               ))}
@@ -26,7 +26,7 @@ export default function SelectField({currentField,formData,handleChange,checked}
                      </Stack>
                     :checked ?
                     <Stack sx={{padding:"2px"}}direction="row" justifyContent="space-around" spacing={20}>
-                      <label htmlFor={currentSubField.label} className="col-sm-2 col-form-label">{currentSubField.label}<span className="required">*</span></label>
+                      <label htmlFor={currentSubField.label} className="col-sm-2 col-form-label">{currentSubField.label}</label>
                       <FormControl sx={{ width:"17.2rem",backgroundColor:"#F0F7FF" }}>
                         <Select id={currentSubField.label} inputProps={{ 'aria-label': 'Without label' }} >
                           {currentSubField.validate.options.map((option) => (

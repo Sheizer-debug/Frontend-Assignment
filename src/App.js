@@ -10,19 +10,37 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import DialogBox from './Dialog.js';
+import DialogBox from './DialogBox.js';
 export default  function App() {
-  function generateFormState(schema) {
-    const keys=Object.keys(schema);
-    const formState={};
+  function generateFormState(schema){
+    const keys = Object.keys(schema);
+    const formState = {};
+  
     keys.forEach((key) => {
-      if(schema[key].validate.defaultValue)
-        formState[schema[key]['jsonKey']] = schema[key].validate.defaultValue;
-      else
-        formState[schema[key]['jsonKey']] = "";
+      const field = schema[key];
+  
+      if (field.uiType === 'Group') {
+        const subParameters = field.subParameters;
+        formState[field.jsonKey] = {};
+  
+        subParameters.forEach((subField) => {
+          if (subField.validate.defaultValue) {
+            formState[field.jsonKey][subField.jsonKey] = subField.validate.defaultValue;
+          } else {
+            formState[field.jsonKey][subField.jsonKey] = '';
+          }
+        });
+      } else {
+        if (field.validate.defaultValue) {
+          formState[field.jsonKey] = field.validate.defaultValue;
+        } else {
+          formState[field.jsonKey] = '';
+        }
+      }
     });
+  
     return formState;
-  }  
+  }
   const [jsonData,setJsonData]=useState([]);
   const [checked,setChecked]=useState(false);
   const [formData,setFormData]=useState({});
@@ -37,19 +55,30 @@ export default  function App() {
       return !prevValue;
     });
   }
-  function handleOpen()//open dialog modal
+  function handleOpen()
   {
       setOpen(()=>true);
   }
-  function handleClose()//close dialog modal
+  function handleClose()
   {
       setOpen(false);
   }
-  function handleChange(e,key)
-  {
-    console.log('Change',e.target.value,key)
-    setFormData((prev)=>{
-      return {...prev,[key]:e.target.value};
+  function handleChange(e, key, groupKey) {
+    setFormData((prev) => {
+      if (groupKey) {
+        return {
+          ...prev,
+          [groupKey]: {
+            ...prev[groupKey],
+            [key]: e.target.value
+          }
+        }
+      } else {
+        return {
+          ...prev,
+          [key]: e.target.value
+        };
+      }
     });
   }
   return (

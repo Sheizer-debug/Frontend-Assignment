@@ -1,5 +1,5 @@
 import React from "react";
-import {useEffect,useState} from 'react';
+import {useState} from 'react';
 import './JSONEditor.css'
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
